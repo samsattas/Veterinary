@@ -1,1 +1,3 @@
-public class
+public class Veterinary{
+	
+}
