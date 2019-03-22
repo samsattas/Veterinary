@@ -11,10 +11,11 @@ public class Veterinary{
 		this.nClient = nClient;
 
 	}
+	
 
-
+//getters & setters
 	public String getName(){return name;}
-	public Client[] nClient(){return nClient;}
+	public Client[] getNClient(){return nClient;}
 
 	public void setName(String name){this.name = name;}
 	public void setNClient(Client[] nClient){this.nClient = nClient;}
