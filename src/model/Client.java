@@ -19,7 +19,7 @@ public class Client{
 	}
 
 	
-//getters & setters
+	//getters & setters
 	public String getName(){return name;}
 	public int getId(){return id;}
 	public String getAdress(){return adress;}

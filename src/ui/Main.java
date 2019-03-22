@@ -21,7 +21,7 @@ public class Main{
 		Client auxClient;
 
 		
-
+		//DATE
 		System.out.print("ingrese el dia actual\n");
 		int day=s.nextInt();
 		s.nextLine();
@@ -64,36 +64,42 @@ public class Main{
 
 			}else if(select== 1){//REGISTRO CLIENTES
 				s.nextLine();//CLEAR int>String
-
-				System.out.println("Ingrese su nombre:");				
-				String name = s.nextLine();
 				
-				System.out.println("Ingrese su ID:");
-				int id = s.nextInt();
 
-				s.nextLine();//CLEAR int>String
-
-				System.out.println("Ingrese su direccion:");
-				String adress = s.nextLine();
+				if (!regPet.isEmpty()){
+					System.out.println("Ingrese su nombre:");				
+					String name = s.nextLine();
 				
-				System.out.println("Ingrese su telefono:");
-				long phone = s.nextLong();
+					System.out.println("Ingrese su ID:");
+					int id = s.nextInt();
 
+					s.nextLine();//CLEAR int>String
+
+					System.out.println("Ingrese su direccion:");
+					String adress = s.nextLine();
 				
-				System.out.println("Ingrese el numero de su Mascota:");
-				for (int a = 0; a < regPet.size(); a++){
-					System.out.println( a + ")----------" + regPet.get(a) + "\n------------\n");
+					System.out.println("Ingrese su telefono:");
+					long phone = s.nextLong();
+
+					System.out.println("Ingrese el numero de su Mascota:");
+					for (int a = 0; a < regPet.size(); a++){
+						System.out.println( a + ")----------" + regPet.get(a) + "\n------------\n");
+					}
+					int petSelect = s.nextInt();
+					Pet cPet = regPet.get(petSelect);
+
+					auxClient = new Client(name, id, adress, phone, cPet);
+					regClient.add(auxClient);
+
+					seeClient.add(name);
+				}else{
+					System.out.println("\n########################################");
+					System.out.println("# NO HAY MASCOTAS, REGISTRO CANCELADO. #");
+					System.out.println("########################################\n");
 				}
 
-				int petSelect = s.nextInt();
-				Pet cPet = regPet.get(petSelect);
-
-
-//IF LEFT FOR NO PETS REGISTERED
-				auxClient = new Client(name, id, adress, phone, cPet);
-				regClient.add(auxClient);
-
-				seeClient.add(name);
+				
+				
 
 				
    				
@@ -120,7 +126,22 @@ public class Main{
 				s.nextLine();//CLEAR int>String
 
 				System.out.println("Ingrese el tipo de animal:");
-				String type = s.nextLine();
+				System.out.println("0.Perro");
+				System.out.println("1.Gato");
+				System.out.println("2.Ave");
+				System.out.println("3.Otro");
+
+				int typeSelect = s.nextInt();
+
+				if(typeSelect == 0){
+					String type = "Perro";
+				}else if(typeSelect == 1){
+					String type = "Gato";
+				}else if(typeSelect == 2){
+					String type = "Otro";
+				}else{
+					String type = "Otro";
+				}
 
 				System.out.println("Ingrese el peso:");
 				double weight = s.nextDouble();
@@ -133,7 +154,10 @@ public class Main{
 
 				System.out.println("Se ha registrado exitosamente!");
 
-			}else if (select == 4){
+
+
+
+			}else if (select == 4){//VER MASCOTAS
 				System.out.println("Mascotas:\n");
 				for (int n = 0; n < regPet.size();n++){
 					System.out.println( n + ")----------" + regPet.get(n) + "\n------------\n");

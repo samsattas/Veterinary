@@ -20,7 +20,7 @@ public class Clinic{
 	}
 
 
-//getters & setters
+	//getters & setters
 	public boolean getStatus(){return status;}
 	public Client getCClient(){return cClient;}
 	public Date getInDate(){return inDate;}

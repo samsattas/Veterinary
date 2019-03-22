@@ -11,9 +11,9 @@ public class Veterinary{
 		this.nClient = nClient;
 
 	}
-	
 
-//getters & setters
+
+	//getters & setters
 	public String getName(){return name;}
 	public Client[] getNClient(){return nClient;}
 

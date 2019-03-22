@@ -8,7 +8,7 @@ public class Date{
 	private int year;
 	
 	
-//builder
+	//builder
 	public Date( int day, int month, int year) {		
 		this.day = day;
 		this.month = month;
@@ -16,7 +16,7 @@ public class Date{
 	}
 
 	
-//getters & setters	
+	//getters & setters	
 	public int getDay(){return day;}	
 	public int getMonth(){return month;}	
 	public int getYear(){return year;}

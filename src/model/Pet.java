@@ -1,6 +1,10 @@
 package model;
 
 public class Pet{
+	private final static String PERRO = "Perro";
+	private final static String GATO = "Gato";
+	private final static String AVE = "Ave";
+	private final static String OTRO = "Otro";
 	
 	private String name;
 	private int age;
@@ -18,7 +22,7 @@ public class Pet{
 	}
 
 
-//getters & setters
+	//getters & setters
 	public String getName(){return name;}
 	public int getAge(){return age;}
 	public String getType(){return type;}

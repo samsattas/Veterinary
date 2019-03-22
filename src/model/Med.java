@@ -15,7 +15,7 @@ public class Med{
 	}
 
 
-//getters & setters
+	//getters & setters
 	public String getName() {return name;}
 	public double getDose() {return dose;}
 	public double getDoseCost() {return doseCost;}
