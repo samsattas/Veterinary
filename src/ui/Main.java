@@ -8,19 +8,20 @@ import java.util.ArrayList;
 
 public class Main{
 	public static void main(String []args){
-		ArrayList<String> seeClient = new ArrayList<String>();
+		
 		ArrayList<Client> regClient = new ArrayList<Client>();
-		ArrayList<String> seePet = new ArrayList<String>();
+		
 		ArrayList<Pet> regPet = new ArrayList<Pet>();
 		Scanner s=new Scanner(System.in);
+
 		//LocalDate today = LocalDate.now();
 		int i = 0;
 		int select = 0;
 		String tot = "	Clientes:\n";
 		Pet auxPet;
 		Client auxClient;
-
 		
+/*		
 		//DATE
 		System.out.print("ingrese el dia actual\n");
 		int day=s.nextInt();
@@ -35,7 +36,7 @@ public class Main{
 		s.nextLine();
 		
 		Date todayDate =new Date(day, month, year);
-
+*/
 
 		while(i < 1){
 			System.out.println("#############################################");
@@ -44,15 +45,21 @@ public class Main{
 			System.out.println("#############################################\n");
 
 			//System.out.println("Fecha: " + today);
-			System.out.println("Fecha: " + day + "/" + month + "/" + year + "\n");
+			//System.out.println("Fecha: " + day + "/" + month + "/" + year + "\n");
 
 			System.out.println("\n	Que desea hacer?");
 			System.out.println("	1.Registrar usuario");
 			System.out.println("	2.Ver usuarios");
 			System.out.println("	3.Registrar mascota");//DONE RF#
 			System.out.println("	4.Ver mascotas");
-			System.out.println("	5.");
+			System.out.println("	5.Calcular costo");
 			System.out.println("	6.");
+			System.out.println("	7.");
+			System.out.println("	8.");
+			System.out.println("	9.");
+			System.out.println("	10.");
+			System.out.println("	11.");
+			System.out.println("	12.");
 
 			System.out.println("	0.Salir");
 
@@ -89,9 +96,9 @@ public class Main{
 					Pet cPet = regPet.get(petSelect);
 
 					auxClient = new Client(name, id, adress, phone, cPet);
+					
 					regClient.add(auxClient);
-
-					seeClient.add(name);
+					
 				}else{
 					System.out.println("\n########################################");
 					System.out.println("# NO HAY MASCOTAS, REGISTRO CANCELADO. #");
@@ -106,6 +113,7 @@ public class Main{
     			
 
 			}else if (select == 2){//VER CLIENTES
+				
 				System.out.println("Clientes:\n" );
 				for(int n = 0; n < regClient.size();n++){
 					System.out.println(n + ")-----------------------------\n" + regClient.get(n) + "\n-------------------------------\n");
@@ -125,24 +133,32 @@ public class Main{
 
 				s.nextLine();//CLEAR int>String
 
-				System.out.println("Ingrese el tipo de animal:");
-				System.out.println("0.Perro");
-				System.out.println("1.Gato");
-				System.out.println("2.Ave");
-				System.out.println("3.Otro");
+				String type = "";
+				int i3 = 0;
+				while(i3 <1){
+					System.out.println("Ingrese el tipo de animal:");
+					System.out.println("0.Perro");
+					System.out.println("1.Gato");
+					System.out.println("2.Ave");
+					System.out.println("3.Otro");
 
-				int typeSelect = s.nextInt();
-
-				if(typeSelect == 0){
-					String type = "Perro";
-				}else if(typeSelect == 1){
-					String type = "Gato";
-				}else if(typeSelect == 2){
-					String type = "Otro";
-				}else{
-					String type = "Otro";
+					int typeSelect = s.nextInt();
+					
+					
+				
+					if(typeSelect == 0){
+						type = "Perro";
+						i3++;
+					}else if(typeSelect == 1){
+						type = "Gato";
+						i3++;
+					}else if(typeSelect == 2){
+						type = "Otro";
+						i3++;
+					}else{
+						System.out.println("Numero no valido, ingrese de nuevo");
+					}
 				}
-
 				System.out.println("Ingrese el peso:");
 				double weight = s.nextDouble();
 
@@ -150,7 +166,7 @@ public class Main{
 
 				regPet.add(auxPet);
 
-				seePet.add(pName);
+				
 
 				System.out.println("Se ha registrado exitosamente!");
 
@@ -162,6 +178,81 @@ public class Main{
 				for (int n = 0; n < regPet.size();n++){
 					System.out.println( n + ")----------" + regPet.get(n) + "\n------------\n");
 				}
+
+
+
+
+
+
+
+			}else if(select == 5){//CALCULAR TOTAL A PAGAR
+				if (!regPet.isEmpty()){
+				System.out.println("Seleccione la mascota:\n");
+				System.out.println("Mascotas:\n");
+				for (int n = 0; n < regPet.size();n++){
+					System.out.println( n + ")----------" + regPet.get(n) + "\n------------\n");
+				}
+				select = s.nextInt();
+				double total;
+				String type = regPet.get(select).getType();
+				double weight = regPet.get(select).getWeight();
+				int nDays;
+				System.out.println("Ingrese el numero de dias de hospitalozacion:\n");
+				nDays = s.nextInt();
+
+				if(type == "Gato"){
+					if (weight>=1 && weight<=3){
+						total = 10000;
+					}else if (weight>=3.1 && weight<=10){
+						total = 12000;
+					}else if (weight>=10.1 && weight<=20) {
+						total = 15000;
+					}else{
+						total = 20000;
+					}
+				}else if(type == "Perro"){
+					if (weight>=1 && weight<=3){
+						total = 15000;
+					}else if (weight>=3.1 && weight<=10){
+						total = 17000;
+					}else if (weight>=10.1 && weight<=20) {
+						total = 20000;
+					}else{
+						total = 25000;
+					}
+				}else if(type == "Ave"){
+					if (weight>=1 && weight<=3){
+						total = 10000;
+					}else if (weight>=3.1 && weight<=10){
+						total = 12000;
+					}else if (weight>=10.1 && weight<=20) {
+						total = 20000;
+					}else{
+						total = 25000;
+					}
+				}else{
+					if (weight>=1 && weight<=3){
+						total = 10000;
+					}else if (weight>=3.1 && weight<=10){
+						total = 17000;
+					}else if (weight>=10.1 && weight<=20) {
+						total = 30000;
+					}else{
+						total = 30000;
+					}
+				}
+
+
+				total = total * nDays;
+
+				System.out.println("Costo de medicamentos: \n");
+				double mCost = s.nextInt();
+				System.out.println("El total a pagar es: $" + total);
+				}else{
+					System.out.println("\n#######################################");
+					System.out.println("# NO HAY MASCOTAS, CALCULO CANCELADO. #");
+					System.out.println("#######################################\n");
+				}				
 			}
 		}
 	}
