@@ -1,6 +1,8 @@
 package model;
 
 public class Room{
+	private final static boolean DISPONIBLE = true;
+	private final static boolean OCUPADO = false;
 
 	private Clinic rClinic;
 	private Pet rPet;
@@ -10,7 +12,7 @@ public class Room{
 		
 		this.rClinic = null;
 		this.rPet = null;
-		this.space = space;
+		this.space = DISPONIBLE;
 	}
 
 	//getters & setters

@@ -11,7 +11,12 @@ public class Main{
 		
 		ArrayList<Client> regClient = new ArrayList<Client>();
 		ArrayList<Pet> regPet = new ArrayList<Pet>();
+		ArrayList<Clinic> regClinic = new ArrayList<Clinic>();
 		Room[] miniRoom = new Room[7];
+
+		for(int n = 0; n<7; n++){
+			miniRoom[n] = new Room(null, null, true);
+		}
 
 		Scanner s=new Scanner(System.in);
 
@@ -21,32 +26,17 @@ public class Main{
 		String tot = "	Clientes:\n";
 		Pet auxPet;
 		Client auxClient;
+		Clinic auxClinic;
 		
-/*		
-		//DATE
-		System.out.print("ingrese el dia actual\n");
-		int day=s.nextInt();
-		s.nextLine();
-		
-		System.out.print("ingrese el mes actual\n");		
-		int month=s.nextInt();
-		s.nextLine();
-		
-		System.out.print("ingrese el anio actual\n");		
-		int year=s.nextInt();
-		s.nextLine();
-		
-		Date todayDate =new Date(day, month, year);
-*/
+
 
 		while(i < 1){
-			System.out.println("#############################################");
-			System.out.println("#####	VETERINARIA MI PEQUE\u00d1A MASCOTA	#####");
-			System.out.println("#############	  BIENVENIDO	#############");
-			System.out.println("#############################################\n");
+			System.out.println("\n###################################################################################");
+			System.out.println("###################	  VETERINARIA MI PEQUE\u00d1A MASCOTA 	###################");
+			System.out.println("###########################	  BIENVENIDO	###################################");
+			System.out.println("###################################################################################\n");
 
-			//System.out.println("Fecha: " + today);
-			//System.out.println("Fecha: " + day + "/" + month + "/" + year + "\n");
+			
 
 			System.out.println("\n	Que desea hacer?");
 			System.out.println("	1.Registrar usuario");
@@ -55,10 +45,10 @@ public class Main{
 			System.out.println("	4.Ver mascotas");
 			System.out.println("	5.Calcular costo");
 			System.out.println("	6.Buscar datos de contacto a traves del nombre del cliente");
-			System.out.println("	7.");
-			System.out.println("	8.");
-			System.out.println("	9.");
-			System.out.println("	10.");
+			System.out.println("	7.Buscar datos de contacto a traves del nombre de la mascota");
+			System.out.println("	8.Consultar mini cuartos");
+			System.out.println("	9.Hospitalizar mascota");
+			System.out.println("	10.Dar de alta una mascota");
 			System.out.println("	11.");
 			System.out.println("	12.");
 
@@ -67,8 +57,13 @@ public class Main{
 			select = s.nextInt();
 
 			if (select == 0){//SALIDA
-				System.out.println("VUELVA PRONTO!");
+				System.out.println("VUELVA PRONTO!\n");
+				System.out.println("\n									~samsattas");
 				i++;
+
+
+
+
 
 			}else if(select== 1){//REGISTRO CLIENTES
 				s.nextLine();//CLEAR int>String
@@ -296,11 +291,111 @@ public class Main{
 
 
 
-			}else if(select == 7){
+			}else if(select == 7){//BUSQUEDA DE DATOS A TRAVES DEL NOMBRE DE LA MASCOTA
+				s.nextLine();
+				String find;
+				if(!regClient.isEmpty()){
+					System.out.println("Ingrese el nombre de la mascota:");
+					
+					find = s.nextLine();
+
+					for(int n = 0; n<regClient.size();n++){
+						//String name = regClient.get(n).getName();
+						//System.out.println(name);
+						
+						if(regClient.get(n).getCPet().getName().equals(find)){
+							System.out.println("Datos de contacto:\n");
+							System.out.println("Telefono: " + regClient.get(n).getPhone());
+							System.out.println("Direccion: " + regClient.get(n).getAdress());
+						}
+					}
+				}else {
+					System.out.println("NO HAY USUARIOS REGISTRADOS");
+				}
+
+
+
+
+
+
 				
 			}else if(select == 8){//CONSULTAR MINI CUARTOS
+
+				System.out.println("Mini cuartos: ");
+				for(int n=0; n<7; n++){
+					if(miniRoom[n].getSpace()==true){
+						System.out.println("	" + n + ")DISPONIBLE");
+					}else{
+						System.out.println("	" + n + ")OCUPADO");
+					}
+				}
+
+
+
+
+
+
 				
-			}else if(select == 9){
+			}else if(select == 9){//HOSPITALIZAR MASCOTA
+				if(!regClient.isEmpty()){
+					System.out.println("Ingres el numero del mini cuarto:\n");
+					System.out.println("Mini cuartos disponibles: ");
+					for(int n=0; n<7; n++){
+						if(miniRoom[n].getSpace()==true){
+							System.out.println("	" + n + ")DISPONIBLE");
+						}
+					}
+
+					int find = s.nextInt();
+					if(miniRoom[find].getSpace()==true){
+						boolean status;
+
+						System.out.println("Seleccione un usuario");
+						System.out.println("Clientes:\n" );
+						for(int n = 0; n < regClient.size();n++){
+							System.out.println(n + ")-----------------------------\n" + regClient.get(n) + "\n-------------------------------\n");
+						}
+						int find1 = s.nextInt();
+						int p = 0;
+						while(p<1){
+							if(!regClient.get(find1).equals(null)){
+								status = false;
+								Client cClient = regClient.get(find1);
+
+								System.out.print("ingrese el dia actual\n");
+								int day=s.nextInt();							
+			
+								System.out.print("ingrese el mes actual\n");		
+								int month=s.nextInt();
+									
+								System.out.print("ingrese el anio actual\n");		
+								int year=s.nextInt();
+		
+								Date inDate =new Date(day, month, year);
+
+								s.nextLine();//CLEAN
+								System.out.println("Ingrese los sintomas:");
+								String symptom = s.nextLine();
+
+								System.out.println("Ingrese el diagnostico:");
+								String diagnostic = s.nextLine();
+
+
+								auxClinic = new Clinic(status, cClient, inDate, symptom, diagnostic);
+								regClinic.add(auxClinic);
+								p++;
+							}else{
+								System.out.println("Usuario no encontrado, ingrese de nuevo:");
+							}
+						}
+
+					miniRoom[find].setSpace(false);
+
+					}
+				}else{
+					System.out.println("NO HAY USUARIOS REGISTRADOS");
+				}
+
 				
 			}else if(select == 10){
 				
