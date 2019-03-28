@@ -404,7 +404,31 @@ public class Main{
 
 
 			}else if(select == 10){//DAR DE ALTA
+				if(!regClinic.isEmpty()){
+				
+					System.out.println("Elija el usuario: ");
+					for(int n=0; n<regClinic.size(); n++){
+						System.out.println(n + ")" + regClinic.get(n).getCClient());
+					}
+					int find = s.nextInt();
+					regClinic.get(find).setStatus(false);
 
+					System.out.println("Elija el cuarto que se desocupa\n");
+					System.out.println("Mini cuartos: ");
+					for(int n=0; n<7; n++){
+						if(miniRoom[n].getSpace()==true){
+							System.out.println("	" + n + ")DISPONIBLE");
+						}else{
+							System.out.println("	" + n + ")OCUPADO");
+						}
+
+						int roomSelect = s.nextInt();
+						miniRoom[roomSelect].setSpace(true);
+
+					}
+				}else{
+					System.out.println("NO HAY HOSPITALIZACIONES");
+				}
 
 
 
