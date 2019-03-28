@@ -49,7 +49,7 @@ public class Main{
 			System.out.println("	8.Consultar mini cuartos");
 			System.out.println("	9.Hospitalizar mascota");
 			System.out.println("	10.Dar de alta una mascota");
-			System.out.println("	11.");
+			System.out.println("	11.Mostrar historia clinica");
 			System.out.println("	12.");
 
 			System.out.println("	0.Salir");
@@ -397,7 +397,18 @@ public class Main{
 				}
 
 				
-			}else if(select == 10){
+
+
+
+
+
+
+			}else if(select == 10){//DAR DE ALTA
+
+
+
+
+
 				
 			}else if(select == 11){
 				
